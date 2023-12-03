@@ -2,6 +2,9 @@ package net.maiatoday.turbogiggle
 
 import android.graphics.Matrix
 import android.graphics.RectF
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
 import kotlin.math.min
 
 // by default the rounded polygon library creates canonical shapes with a radius of 1 around a center at (0, 0)
@@ -21,3 +24,6 @@ fun fromCanonicalToView(
     matrix.postScale(scale, scale)
     return matrix
 }
+
+@Composable
+fun Dp.toPx() = with(LocalDensity.current) { this@toPx.toPx() }

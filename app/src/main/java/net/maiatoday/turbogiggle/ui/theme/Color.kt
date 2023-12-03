@@ -14,3 +14,7 @@ val Spike1 = Color.Magenta
 val Spike2 = Color.Green
 val Spike3 = Color.Blue
 val Spike4 = Color.Black
+
+val Pane1 = Color(0xFF6650a4)
+val Pane2 = Color(0xFFD0BCFF)
+val Pane3 = Color(0xFFB37FB2)
