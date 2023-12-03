@@ -19,9 +19,17 @@ fun Giggle(modifier: Modifier = Modifier) {
         SpikySplash(
             Modifier
                 .size(300.dp)
-                .offset(100.dp, 200.dp))
+                .offset(100.dp, 200.dp)
+        )
         ShimmerPane(
-            Modifier.height(280.dp).width(150.dp)
+            Modifier
+                .height(280.dp)
+                .width(150.dp)
+        )
+        ScribblePath(
+            Modifier
+                .fillMaxSize()
+            // .offset(500.dp, 500.dp)
         )
     }
 }
