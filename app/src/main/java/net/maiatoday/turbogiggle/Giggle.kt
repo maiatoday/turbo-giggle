@@ -16,20 +16,23 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Giggle(modifier: Modifier = Modifier) {
     Box(modifier.background(Color.Red)) {
-        SpikySplash(
-            Modifier
-                .size(300.dp)
-                .offset(100.dp, 200.dp)
-        )
         ShimmerPane(
             Modifier
                 .height(280.dp)
-                .width(150.dp)
+                .width(250.dp)
         )
-        ScribblePath(
+        Daisy(
             Modifier
                 .fillMaxSize()
-            // .offset(500.dp, 500.dp)
+        )
+        Bean(
+            Modifier
+                .fillMaxSize()
+        )
+        SpikySplash(
+            Modifier
+                .size(300.dp)
+                .offset(20.dp, 200.dp)
         )
     }
 }

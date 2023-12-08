@@ -9,7 +9,7 @@ import kotlin.math.min
 
 // by default the rounded polygon library creates canonical shapes with a radius of 1 around a center at (0, 0)
 // https://medium.com/androiddevelopers/the-shape-of-things-to-come-1c7663d9dbc0
-fun fromCanonicalToView(
+fun fromBoundsToView(
     bounds: RectF = RectF(-1f, -1f, 1f, 1f),
     width: Float,
     height: Float
@@ -24,6 +24,7 @@ fun fromCanonicalToView(
     matrix.postScale(scale, scale)
     return matrix
 }
+
 
 @Composable
 fun Dp.toPx() = with(LocalDensity.current) { this@toPx.toPx() }

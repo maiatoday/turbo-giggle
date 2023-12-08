@@ -46,13 +46,12 @@ fun SpikySplash(modifier: Modifier = Modifier, colors:List<Color> = splashColors
     )
     Spacer(
         modifier
-            .background(Color.Red)
             .graphicsLayer {
                 scaleY = 0.5f
                 rotationZ = rotate
             }
             .drawWithCache {
-                val matrix = fromCanonicalToView(width = size.width, height = size.height)
+                val matrix = fromBoundsToView(width = size.width, height = size.height)
                 val sizedSpikySplash = RoundedPolygon(spikySplash).apply { transform(matrix) }
                 val spikyBrush = Brush.radialGradient(colors)
                 onDrawBehind {
