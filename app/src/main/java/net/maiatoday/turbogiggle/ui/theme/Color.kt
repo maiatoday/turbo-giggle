@@ -10,11 +10,13 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-val Spike1 = Color.Magenta
-val Spike2 = Color.Green
-val Spike3 = Color.Blue
-val Spike4 = Color.Black
-
-val Pane1 = Color(0xFF6650a4)
-val Pane2 = Color(0xFFD0BCFF)
-val Pane3 = Color(0xFFB37FB2)
+// https://unsplash.com/photos/multicolored-hallway-RnCPiXixooY
+val Pasta = Color(0xFFE7D6CE)
+val OrangeSquash = Color(0xFFFD9B72)
+val Plumberry = Color(0xFF682084)
+val Aubergette = Color(0xFF421F7B)
+val SwimmingCap = Color(0xFF4FBBA5)
+val Cherry = Color(0xFFFC1946)
+val Sherbet = Color(0xFFD33BB9)
+val Licorice = Color(0xFF35192B)
+val Custard = Color(0xFFFEC05D)

@@ -2,6 +2,8 @@ package net.maiatoday.turbogiggle
 
 import android.os.Build
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -11,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -37,6 +40,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.flatten
+import net.maiatoday.turbogiggle.ui.theme.Aubergette
+import net.maiatoday.turbogiggle.ui.theme.Licorice
+import net.maiatoday.turbogiggle.ui.theme.OrangeSquash
+import net.maiatoday.turbogiggle.ui.theme.Pasta
+import net.maiatoday.turbogiggle.ui.theme.Sherbet
 import kotlin.math.min
 
 const val daisy =
@@ -61,10 +69,13 @@ object Scribbles {
 @Composable
 fun Daisy(
     modifier: Modifier = Modifier,
-    brush: Brush = Brush.linearGradient(colors = listOf(Color.Magenta, Color.Green))
+    colors: List<Color> =  listOf(Sherbet, OrangeSquash)
 ) {
     val path = remember {
         Scribbles.daisyPath.toPath()
+    }
+    val brush = remember {
+        Brush.linearGradient(colors = colors)
     }
     ScribblePath(path, brush, modifier)
 }
@@ -72,10 +83,13 @@ fun Daisy(
 @Composable
 fun Bean(
     modifier: Modifier = Modifier,
-    brush: Brush = Brush.linearGradient(colors = listOf(Color.Magenta, Color.DarkGray))
+    colors: List<Color> =  listOf(Sherbet, OrangeSquash)
 ) {
     val path = remember {
         Scribbles.beanPath.toPath()
+    }
+    val brush = remember {
+        Brush.linearGradient(colors = colors)
     }
     ScribblePath(path, brush, modifier)
 }
@@ -83,10 +97,13 @@ fun Bean(
 @Composable
 fun RoundScribble(
     modifier: Modifier = Modifier,
-    brush: Brush = Brush.linearGradient(colors = listOf(Color.Magenta, Color.DarkGray))
+    colors: List<Color> =  listOf(Sherbet, OrangeSquash)
 ) {
     val path = remember {
         Scribbles.roundScribblePath.toPath()
+    }
+    val brush = remember {
+        Brush.linearGradient(colors = colors)
     }
     ScribblePath(path, brush, modifier)
 }
@@ -94,10 +111,13 @@ fun RoundScribble(
 @Composable
 fun SpikyScribble(
     modifier: Modifier = Modifier,
-    brush: Brush = Brush.linearGradient(colors = listOf(Color.Green, Color.Magenta))
+    colors: List<Color> =  listOf(Sherbet, OrangeSquash)
 ) {
     val path = remember {
         Scribbles.spikyScribblePath.toPath()
+    }
+    val brush = remember {
+        Brush.linearGradient(colors = colors)
     }
     ScribblePath(path, brush, modifier)
 }
@@ -111,19 +131,16 @@ fun ScribblePath(path: Path, brush: Brush, modifier: Modifier = Modifier, stroke
     LaunchedEffect(Unit) {
         progress.animateTo(
             1f,
-            animationSpec = infiniteRepeatable(tween(3000))
+            animationSpec = infiniteRepeatable(tween(3000, easing = LinearEasing))
         )
     }
     Spacer(modifier = modifier
-        .padding(top = 8.dp, start = 8.dp, bottom = 8.dp, end = 8.dp)
+        .padding(8.dp)
         .aspectRatio(bounds.width / bounds.height)
         .drawWithCache {
             val matrix = fromBoundsToComposeView(bounds, width = size.width, height = size.height)
             path.transform(matrix)
-            val lines =
-                path
-                    .asAndroidPath()
-                    .flatten(0.5f)
+            val lines = path.asAndroidPath().flatten(0.5f)
             val pathMeasure = PathMeasure()
             pathMeasure.setPath(path, false)
             val totalLength = pathMeasure.length
@@ -165,8 +182,7 @@ fun fromBoundsToComposeView(
 private fun PreviewDaisy() {
     Daisy(
         Modifier
-           // .background(Color.Cyan)
-         .fillMaxSize()
+            .fillMaxSize()
     )
 }
 
@@ -175,8 +191,7 @@ private fun PreviewDaisy() {
 private fun PreviewBean() {
     Bean(
         Modifier
-            .background(Color.Yellow)
-        // .fillMaxSize()
+            .background(Pasta)
     )
 }
 
@@ -185,8 +200,7 @@ private fun PreviewBean() {
 private fun PreviewRoundScribble() {
     RoundScribble(
         Modifier
-            .background(Color.Green)
-        // .fillMaxSize()
+            .background(Licorice)
     )
 }
 
@@ -195,7 +209,7 @@ private fun PreviewRoundScribble() {
 private fun PreviewSpikyScribble() {
     SpikyScribble(
         Modifier
-            .background(Color.Blue)
-        .fillMaxSize()
+            .background(Aubergette)
+            .fillMaxSize()
     )
 }

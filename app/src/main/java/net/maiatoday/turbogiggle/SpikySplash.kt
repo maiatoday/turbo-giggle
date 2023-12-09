@@ -21,18 +21,30 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.graphics.shapes.CornerRounding
 import androidx.graphics.shapes.RoundedPolygon
 import androidx.graphics.shapes.star
-import net.maiatoday.turbogiggle.ui.theme.Spike1
-import net.maiatoday.turbogiggle.ui.theme.Spike2
-import net.maiatoday.turbogiggle.ui.theme.Spike3
-import net.maiatoday.turbogiggle.ui.theme.Spike4
+import net.maiatoday.turbogiggle.ui.theme.Cherry
+import net.maiatoday.turbogiggle.ui.theme.Custard
+import net.maiatoday.turbogiggle.ui.theme.Licorice
+import net.maiatoday.turbogiggle.ui.theme.OrangeSquash
+import net.maiatoday.turbogiggle.ui.theme.Pasta
+import net.maiatoday.turbogiggle.ui.theme.Plumberry
+import net.maiatoday.turbogiggle.ui.theme.Sherbet
+import net.maiatoday.turbogiggle.ui.theme.SwimmingCap
 
 val spikySplash = RoundedPolygon.star(
     numVerticesPerRadius = 14,
     innerRadius = 0.4f,
     innerRounding = CornerRounding(radius = 0.1f)
 )
-val splashColors = listOf(Spike1, Spike2, Spike3, Spike4)
+val splashColors = listOf(Cherry, Licorice, Plumberry, OrangeSquash,  SwimmingCap)
+val colorStops = arrayOf(
+    0.0f to Sherbet,
+    0.2f to Licorice,
+    0.3f to SwimmingCap,
+    0.4f to OrangeSquash,
+    0.5f to Cherry,
+    1f to Licorice,
 
+)
 @Composable
 fun SpikySplash(modifier: Modifier = Modifier, colors:List<Color> = splashColors) {
     val spikyTransition = rememberInfiniteTransition(label = "spiky transition")
@@ -53,7 +65,7 @@ fun SpikySplash(modifier: Modifier = Modifier, colors:List<Color> = splashColors
             .drawWithCache {
                 val matrix = fromBoundsToView(width = size.width, height = size.height)
                 val sizedSpikySplash = RoundedPolygon(spikySplash).apply { transform(matrix) }
-                val spikyBrush = Brush.radialGradient(colors)
+                val spikyBrush = Brush.radialGradient(colorStops = colorStops)
                 onDrawBehind {
                     drawPath(
                         path = sizedSpikySplash
@@ -71,5 +83,5 @@ fun SpikySplash(modifier: Modifier = Modifier, colors:List<Color> = splashColors
 private fun DefaultSpikySplash() {
     SpikySplash(modifier = Modifier
         .fillMaxSize()
-        .background(Color.Red))
+        .background(Sherbet))
 }

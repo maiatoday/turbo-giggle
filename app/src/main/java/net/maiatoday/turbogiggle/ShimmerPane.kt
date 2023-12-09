@@ -19,14 +19,15 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import net.maiatoday.turbogiggle.ui.theme.Pane1
-import net.maiatoday.turbogiggle.ui.theme.Pane2
-import net.maiatoday.turbogiggle.ui.theme.Pane3
+import net.maiatoday.turbogiggle.ui.theme.Cherry
+import net.maiatoday.turbogiggle.ui.theme.Custard
+import net.maiatoday.turbogiggle.ui.theme.Pasta
+import net.maiatoday.turbogiggle.ui.theme.SwimmingCap
 
 @Composable
 fun ShimmerPane(
     modifier: Modifier = Modifier,
-    paneColors: List<Color> = listOf(Pane1, Pane2, Pane3),
+    paneColors: List<Color> = listOf(Pasta, SwimmingCap, Custard, Cherry),
     height: Dp = 120.dp
 ) {
 

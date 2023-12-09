@@ -12,27 +12,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.maiatoday.turbogiggle.ui.theme.Aubergette
+import net.maiatoday.turbogiggle.ui.theme.Cherry
+import net.maiatoday.turbogiggle.ui.theme.Custard
+import net.maiatoday.turbogiggle.ui.theme.Licorice
+import net.maiatoday.turbogiggle.ui.theme.OrangeSquash
+import net.maiatoday.turbogiggle.ui.theme.Sherbet
+import net.maiatoday.turbogiggle.ui.theme.SwimmingCap
 
 @Composable
 fun Giggle(modifier: Modifier = Modifier) {
-    Box(modifier.background(Color.Red)) {
+    Box(modifier.background(Sherbet)) {
+
         ShimmerPane(
             Modifier
                 .height(280.dp)
                 .width(250.dp)
         )
-        Daisy(
-            Modifier
-                .fillMaxSize()
-        )
-        Bean(
-            Modifier
+        Daisy(colors = listOf(SwimmingCap, Aubergette))
+        Bean(colors = listOf(Custard, OrangeSquash),
+            modifier = Modifier
                 .fillMaxSize()
         )
         SpikySplash(
             Modifier
-                .size(300.dp)
-                .offset(20.dp, 200.dp)
+                .size(500.dp)
+                .offset(100.dp, 400.dp)
         )
     }
 }
