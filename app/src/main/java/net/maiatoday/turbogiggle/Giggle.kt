@@ -29,7 +29,13 @@ fun Giggle(modifier: Modifier = Modifier) {
                 .height(280.dp)
                 .width(250.dp)
         )
-        Daisy(colors = listOf(SwimmingCap, Aubergette))
+        Daisy(colors = listOf(SwimmingCap, Licorice))
+
+        SpikyScribble(
+            colors = listOf(Cherry, Licorice),
+            modifier = Modifier
+                .offset(-150.dp, 400.dp)
+        )
         Bean(colors = listOf(Custard, OrangeSquash),
             modifier = Modifier
                 .fillMaxSize()
