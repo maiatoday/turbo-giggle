@@ -38,8 +38,8 @@ val spikySplash = RoundedPolygon.star(
 val splashColors = listOf(Cherry, Licorice, Plumberry, OrangeSquash,  SwimmingCap)
 val colorStops = arrayOf(
     0.0f to Sherbet,
-    0.2f to Licorice,
     0.3f to SwimmingCap,
+    0.2f to Licorice,
     0.4f to OrangeSquash,
     0.5f to Cherry,
     1f to Licorice,

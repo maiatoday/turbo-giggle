@@ -1,12 +1,14 @@
 package net.maiatoday.turbogiggle
 
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -16,6 +18,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.Fill
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -43,19 +46,30 @@ fun ShimmerPane(
             animation = tween(5000, easing = LinearEasing),
         ), label = "Pane shimmer offset"
     )
+    val slideIn by infiniteTransition.animateFloat(
+        initialValue = 0.0f,
+        targetValue = -1.0f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(5000, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "slide offset"
+    )
 
-    Spacer(modifier.drawWithCache {
-        val brush = Brush.linearGradient(
-            colors = paneColors,
-            start = Offset(offset, offset),
-            end = Offset(offset + deltaPx, offset + deltaPx),
-            tileMode = TileMode.Repeated
-        )
-        onDrawBehind {
-            drawRect(brush = brush, style = Fill)
-        }
+    Spacer(modifier
+        .offset(200.dp*slideIn, 0.dp)
+        .drawWithCache {
+            val brush = Brush.linearGradient(
+                colors = paneColors,
+                start = Offset(offset, offset),
+                end = Offset(offset + deltaPx, offset + deltaPx),
+                tileMode = TileMode.Repeated
+            )
+            onDrawBehind {
+                drawRect(brush = brush, style = Fill)
+            }
 
-    })
+        })
 }
 
 @Preview
