@@ -9,10 +9,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.maiatoday.turbogiggle.ui.theme.Aubergette
 import net.maiatoday.turbogiggle.ui.theme.Cherry
 import net.maiatoday.turbogiggle.ui.theme.Custard
 import net.maiatoday.turbogiggle.ui.theme.Licorice
@@ -34,7 +32,7 @@ fun Giggle(modifier: Modifier = Modifier) {
         SpikyScribble(
             colors = listOf(Cherry, Licorice),
             modifier = Modifier
-                .offset(-150.dp, 400.dp)
+                .offset((-150).dp, 400.dp)
         )
         Bean(colors = listOf(Custard, OrangeSquash),
             modifier = Modifier
