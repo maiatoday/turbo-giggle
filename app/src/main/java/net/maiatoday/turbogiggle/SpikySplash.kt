@@ -21,11 +21,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.graphics.shapes.CornerRounding
 import androidx.graphics.shapes.RoundedPolygon
 import androidx.graphics.shapes.star
+import androidx.graphics.shapes.toPath
+import androidx.graphics.shapes.transformed
 import net.maiatoday.turbogiggle.ui.theme.Cherry
-import net.maiatoday.turbogiggle.ui.theme.Custard
 import net.maiatoday.turbogiggle.ui.theme.Licorice
 import net.maiatoday.turbogiggle.ui.theme.OrangeSquash
-import net.maiatoday.turbogiggle.ui.theme.Pasta
 import net.maiatoday.turbogiggle.ui.theme.Plumberry
 import net.maiatoday.turbogiggle.ui.theme.Sherbet
 import net.maiatoday.turbogiggle.ui.theme.SwimmingCap
@@ -64,7 +64,7 @@ fun SpikySplash(modifier: Modifier = Modifier, colors:List<Color> = splashColors
             }
             .drawWithCache {
                 val matrix = fromBoundsToView(width = size.width, height = size.height)
-                val sizedSpikySplash = RoundedPolygon(spikySplash).apply { transform(matrix) }
+                val sizedSpikySplash = RoundedPolygon(spikySplash).apply { transformed(matrix) }
                 val spikyBrush = Brush.radialGradient(colorStops = colorStops)
                 onDrawBehind {
                     drawPath(
